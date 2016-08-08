@@ -62,6 +62,7 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
         pager=(VerticalViewPager)view.findViewById(R.id.pager);
         t2_next = (ImageView) view.findViewById(R.id.t2_next);
 
+
 //        View view1 = LayoutInflater.from(getContext()).inflate(R.layout.synppsispage2, null);
 //        t1_next = (ImageView) view1.findViewById(R.id.t2_next);
 //        pagers.add(view1);
