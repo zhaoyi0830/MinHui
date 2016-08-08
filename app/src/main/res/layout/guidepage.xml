@@ -38,13 +38,13 @@
             android:clickable="true"
             android:padding="15.0dip"
             android:src="@drawable/guide_dot_select" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:clickable="true"
-            android:padding="15.0dip"
-            android:src="@drawable/guide_dot_select" />
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:clickable="true"-->
+            <!--android:padding="15.0dip"-->
+            <!--android:src="@drawable/guide_dot_select" />-->
     </LinearLayout>
     <Button
         android:id="@+id/guide_button"
@@ -56,7 +56,7 @@
         android:layout_marginRight="80dp"
         android:background="@drawable/guide_button_sel"
         android:text="立即体验"
-        android:textColor="@color/main_bule"
+        android:textColor="@color/white"
         android:visibility="gone"
         />
 </RelativeLayout>
