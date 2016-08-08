@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+    >
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose1"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose2"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose3"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose4"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose5"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose6"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose7"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose8"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose9"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose10"
+            android:gravity="left"
+            ></clip>
+    </item>
+    <item android:duration="150">
+        <clip
+            android:clipOrientation="horizontal"
+            android:drawable="@drawable/goose11"
+            android:gravity="left"
+            ></clip>
+    </item>
+</animation-list>
