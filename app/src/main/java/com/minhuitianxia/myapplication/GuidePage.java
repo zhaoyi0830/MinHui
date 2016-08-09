@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.minhuitianxia.myapplication.Adapter.GuidePage_Adapter;
+import com.minhuitianxia.myapplication.Utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,8 @@ public class GuidePage extends Activity implements View.OnClickListener,ViewPage
     //引导图片资源
     private static final int[] pics = { R.mipmap.welcome3,
             R.mipmap.welcome2, R.mipmap.welcome1};
+
+    private Animation animationText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,14 @@ public class GuidePage extends Activity implements View.OnClickListener,ViewPage
         vp = (ViewPager) findViewById(R.id.guide_viewpager);
         guide_button = (Button) findViewById(R.id.guide_button);
         guide_button.setOnClickListener(this);
+        int[] location = new int[2];
+        DensityUtil densityUtil = new DensityUtil(this);
+        guide_button.getLocationOnScreen(location);
+        float fromXDelta = location[0];
+        float toYDelta = location[1];
+        animationText = new TranslateAnimation(fromXDelta,fromXDelta,densityUtil.getScreenHeight(),toYDelta);
+        animationText.setDuration(1000);
+        animationText.setFillAfter(true);
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         //初始化引导图片列表
@@ -130,9 +143,10 @@ public class GuidePage extends Activity implements View.OnClickListener,ViewPage
         setCurDot(position);
         if(position==(pics.length-1)){
             guide_button.setVisibility(View.VISIBLE);
+            guide_button.startAnimation(animationText);
         }else{
             guide_button.setVisibility(View.GONE);
-
+            guide_button.clearAnimation();
         }
     }
     //当滑动状态改变时
