@@ -28,8 +28,8 @@ public class GuidePage extends Activity implements View.OnClickListener,ViewPage
     //记录当前选中位置
     private int currentIndex;
     //引导图片资源
-    private static final int[] pics = { R.mipmap.welcome1,
-            R.mipmap.welcome2, R.mipmap.welcome3};
+    private static final int[] pics = { R.mipmap.welcome3,
+            R.mipmap.welcome2, R.mipmap.welcome1};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

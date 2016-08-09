@@ -47,8 +47,9 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
     private VerticalFragementPagerAdapter mAdapter;
     private ViewPager mPager;
     private int preIndex = 0;
-
     int i;
+    private Animation animationBottom;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,10 +59,11 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
     }
 
     private void iniView(View view) {
+        animationBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.tutorail_bottom);
         listview = new ArrayList<>();
         pager=(VerticalViewPager)view.findViewById(R.id.pager);
         t2_next = (ImageView) view.findViewById(R.id.t2_next);
-
+        t2_next.startAnimation(animationBottom);
 
 //        View view1 = LayoutInflater.from(getContext()).inflate(R.layout.synppsispage2, null);
 //        t1_next = (ImageView) view1.findViewById(R.id.t2_next);
@@ -107,8 +109,10 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
     public void onPageSelected(int position) {
         if (position == 3){
             t2_next.setVisibility(View.GONE);
+            t2_next.clearAnimation();
         }else if (position != 3){
             t2_next.setVisibility(View.VISIBLE);
+            t2_next.startAnimation(animationBottom);
         }
     }
 
