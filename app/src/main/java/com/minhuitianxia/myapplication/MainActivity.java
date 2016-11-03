@@ -165,8 +165,6 @@ public class MainActivity extends AppCompatActivity {
             if(System.currentTimeMillis()-firstTime>2000){
                 if(isCurrF==1){
                     isCanBack=mallF.onBackPressedFfragment();
-                }else if(isCurrF==3){
-                    isCanBack=vip.onBackPressedFfragment();
                 }
                 if(!isCanBack){
                     Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();

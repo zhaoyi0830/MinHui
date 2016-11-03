@@ -1,5 +1,6 @@
 package com.minhuitianxia.myapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,15 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ZoomButtonsController;
 
 import com.minhuitianxia.myapplication.R;
+import com.minhuitianxia.myapplication.ui.VipConsumeActivity;
+import com.minhuitianxia.myapplication.ui.VipDataActivity;
+import com.minhuitianxia.myapplication.ui.VipPasswordActivity;
+import com.minhuitianxia.myapplication.ui.VipRechargeAvtivity;
 
 import java.lang.reflect.Field;
 
@@ -23,119 +29,50 @@ import java.lang.reflect.Field;
  * 会员Fragment
  * Created by Administrator on 2016/7/26.
  */
-public class Vip_Fragment extends Fragment {
-    private WebView introuce_webView;
-    private ImageView back;
-    private ProgressBar pb_goose;
-    private String HomeURL ="http://chaxun.minhuitianxia.top";
-//    private String currUrl = "http://www.600vip.cn/MemSearchPlatfrom/Login/Index?compcode=mhtx";
-    private String currUrl;
-    private int isFirstUrl =1;
+public class Vip_Fragment extends Fragment implements View.OnClickListener{
+    private LinearLayout lin1;
+    private LinearLayout lin2;
+    private LinearLayout lin3;
+    private LinearLayout lin4;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.introuce_fragment,container,false);
+        View view = inflater.inflate(R.layout.vip,container,false);
         iniView(view);
         return view;
     }
 
     private void iniView(View view) {
-        introuce_webView = (WebView) view.findViewById(R.id.introuce_webView);
-        pb_goose = (ProgressBar) view.findViewById(R.id.pb_goose);
-        back = (ImageView) view.findViewById(R.id.back);
-
-        webviewsettings();
-        //加载需要显示的网页
-        introuce_webView.loadUrl(HomeURL);
-        //设置Web视图
-        introuce_webView.setWebViewClient(new HelloWebViewClient());
-        introuce_webView.setWebChromeClient(new WebChromeClient());
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                introuce_webView.goBack();
-            }
-        });
-    }
-    private void webviewsettings() {
-        introuce_webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        //设置WebView属性，能够执行Javascript脚本
-        introuce_webView.getSettings().setJavaScriptEnabled(true);
-        introuce_webView.getSettings().setBlockNetworkImage(false);
-        // 可任意比例缩放
-        introuce_webView.getSettings().setUseWideViewPort(true);
-        //放大缩小
-        introuce_webView.getSettings().setSupportZoom(true);
-        introuce_webView.getSettings().setBuiltInZoomControls(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            introuce_webView.getSettings().setDisplayZoomControls(false);
-        }
-        setZoomControlGone(introuce_webView);
-        introuce_webView.getSettings().setDomStorageEnabled(true);
-        introuce_webView.getSettings().setUserAgentString("1");
-        //webview加载模式
-        introuce_webView.getSettings().setLoadWithOverviewMode(true);
-        introuce_webView.getSettings().setPluginState(WebSettings.PluginState.ON);
-        //拉伸显示全屏方法
-//        introuce_webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-    }
-    //实现放大缩小控件隐藏
-    public void setZoomControlGone(View view) {
-        Class classType;
-        Field field;
-        try {
-            classType = WebView.class;
-            field = classType.getDeclaredField("mZoomButtonsController");
-            field.setAccessible(true);
-            ZoomButtonsController mZoomButtonsController = new ZoomButtonsController(view);
-            mZoomButtonsController.getZoomControls().setVisibility(View.GONE);
-            try {
-                field.set(view, mZoomButtonsController);
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-    }
-    //Web视图
-    private class HelloWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            pb_goose.setVisibility(View.GONE);
-            String originaUrl = view.getOriginalUrl();
-            Log.i("<===>originaUrl", "会员查询: "+originaUrl);
-            if(isFirstUrl==1){
-                currUrl=url;
-                isFirstUrl=2;
-            }
-            if(url!=null){
-                if(currUrl.equals(url)){
-                    back.setVisibility(View.GONE);
-                }else{
-                    back.setVisibility(View.VISIBLE);
-                }
-            }else{
-                back.setVisibility(View.GONE);
-            }
-        }
-    }
-    public boolean onBackPressedFfragment(){
-        if(introuce_webView.canGoBack()){
-            introuce_webView.goBack();
-            return true;
-        }
-        return false;
+        lin1 = (LinearLayout) view.findViewById(R.id.lin1);
+        lin2 = (LinearLayout) view.findViewById(R.id.lin2);
+        lin3 = (LinearLayout) view.findViewById(R.id.lin3);
+        lin4 = (LinearLayout) view.findViewById(R.id.lin4);
+        lin1.setOnClickListener(this);
+        lin2.setOnClickListener(this);
+        lin3.setOnClickListener(this);
+        lin4.setOnClickListener(this);
     }
 
+
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()){
+            case R.id.lin1:
+                intent = new Intent(getActivity(), VipDataActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.lin2:
+                intent = new Intent(getActivity(), VipConsumeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.lin3:
+                intent = new Intent(getActivity(), VipRechargeAvtivity.class);
+                startActivity(intent);
+                break;
+            case R.id.lin4:
+                intent = new Intent(getActivity(), VipPasswordActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }
