@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private long firstTime =0;//第一次按返回键的时间
     private int isCurrF ;
     private boolean isCanBack =false;
+
     /**
      * 当前Fragment的key
      */
