@@ -23,7 +23,6 @@
             android:paddingTop="10dp"
             android:src="@mipmap/mainnav_left"
             android:textSize="18sp"
-            android:visibility="gone"
             />
 
         <TextView

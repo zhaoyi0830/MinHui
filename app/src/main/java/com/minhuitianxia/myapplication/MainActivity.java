@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 //        ft.replace(R.id.main_fragment, mFragment);
 //        ft.commit();
 //    }
-    private void switchFragment(FragmentTag to) {
+    public void switchFragment(FragmentTag to) {
         if (!mCurrentTag.equals(to)) {
             Fragment currentF = getSupportFragmentManager().findFragmentByTag(
                     mCurrentTag.getTag());

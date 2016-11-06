@@ -24,6 +24,7 @@
         <activity android:name=".ui.VipConsumeActivity"></activity>
         <activity android:name=".ui.VipPasswordActivity"></activity>
         <activity android:name=".ui.VipRechargeAvtivity"></activity>
+        <activity android:name=".ui.VipBasicActivity"></activity>
     </application>
 
 </manifest>

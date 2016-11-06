@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.minhuitianxia.myapplication.R;
+import com.minhuitianxia.myapplication.ui.VipBasicActivity;
 import com.minhuitianxia.myapplication.ui.VipRechargeAvtivity;
 
 import org.xutils.common.Callback;
@@ -110,9 +111,8 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener{
                     editor.putBoolean("checkboxBoolean", false);
                     editor.commit();
                 }
-                Intent intent=new Intent(getActivity(),VipRechargeAvtivity.class);
+                Intent intent=new Intent(getActivity(),VipBasicActivity.class);
                 startActivity(intent);
-                getActivity().finish();
                 break;
             case R.id.im_password:
                 break;
