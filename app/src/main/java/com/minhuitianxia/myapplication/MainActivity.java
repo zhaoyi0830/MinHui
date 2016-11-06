@@ -17,6 +17,7 @@ import com.minhuitianxia.myapplication.Fragment.Introduce_Fragment;
 import com.minhuitianxia.myapplication.Fragment.Mall_Fragment;
 import com.minhuitianxia.myapplication.Fragment.Merchant_Fragment;
 import com.minhuitianxia.myapplication.Fragment.Synopsis_Vertical_Fragment;
+import com.minhuitianxia.myapplication.Fragment.VipLoginFragment;
 import com.minhuitianxia.myapplication.Fragment.Vip_Fragment;
 import com.minhuitianxia.myapplication.Utils.FragmentTag;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup rgp_main;
     private Introduce_Fragment introuce;
     private Merchant_Fragment merchant;
-    private Vip_Fragment vip;
+    private VipLoginFragment vip;
     private Mall_Fragment mallF;
     private Synopsis_Vertical_Fragment synopsisF;
     private long firstTime =0;//第一次按返回键的时间
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         rgp_main = (RadioGroup) findViewById(R.id.rgp_main);
         introuce = new Introduce_Fragment();//公司介绍
         merchant = new Merchant_Fragment();//积分
-        vip = new Vip_Fragment();//会员
+        vip = new VipLoginFragment();//会员
         mallF = new Mall_Fragment();//商城
         synopsisF = new Synopsis_Vertical_Fragment();//竖向滑动公司简介
         rb_introduce.setChecked(true);
