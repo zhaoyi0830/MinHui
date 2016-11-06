@@ -96,6 +96,10 @@
                     android:button="@drawable/show_sel"
                     />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e5" />
         </LinearLayout>
         <Button
             android:id="@+id/lg_button"
