@@ -39,6 +39,7 @@ public class Vip_Fragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.vip,container,false);
         iniView(view);
         return view;
+
     }
 
     private void iniView(View view) {
