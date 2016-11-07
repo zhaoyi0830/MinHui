@@ -5,49 +5,50 @@ package com.minhuitianxia.myapplication.entity;
  */
 public class VipDataEntity {
 
+
     /**
      * attributes : null
-     * obj : {"address":"","id":"bbee85b55806ace801580a31c7c508c9","password":"c9d09aa7de301532052521dfde7c31da","hykId":"6225350818101141","hyName":"王大寅","czye":0,"jfye":7000,"delflag":null,"delDate":1572247823000,"tel":"15552223061","shState":"ok","zcdpId":"9","tcygId":"","hyState":"zc","hyLevel":"1","sex":"0","tjrName":"贾相军","csrq":159811200000,"sfz":"370611197501250313","gddh":"","tcygName":"","tjrCardId":"6225350818096155","tjrId":"2309","txImgUrl":"","wxCode":"","remark":"","email":"","updateName":"富豪银座店","createName":"富豪银座店","createBy":"fhyzd","updateBy":"fhyzd","createDate":1477639657000,"updateDate":1477639823000}
+     * obj : {"address":"","id":"2759","password":"6918bc28bef29408","updateName":"总店技术01","createName":null,"createBy":null,"updateBy":"zdjs01","createDate":1476869191000,"updateDate":1477446205000,"remark":"","email":null,"hykId":"6225350818106666","hyName":"赵宜","czye":0,"jfye":5500,"delflag":null,"delDate":null,"tel":"15166866385","shState":"ok","zcdpId":"1","tcygId":null,"hyState":"zc","hyLevel":"1","sex":"0","tjrName":"王婷婷","csrq":746640000000,"sfz":"370612199308302519","gddh":null,"tcygName":null,"tjrCardId":"6225350818094666","tjrId":"27","txImgUrl":null,"wxCode":null}
      * msg : 操作成功
-     * jsonStr : {"obj":{"address":"","createBy":"fhyzd","createDate":1477639657000,"createName":"富豪银座店","csrq":159811200000,"czye":0.000000,"delDate":1572247823000,"email":"","gddh":"","hyLevel":"1","hyName":"王大寅","hyState":"zc","hykId":"6225350818101141","id":"bbee85b55806ace801580a31c7c508c9","jfye":7000.000000,"password":"c9d09aa7de301532052521dfde7c31da","remark":"","sex":"0","sfz":"370611197501250313","shState":"ok","tcygId":"","tcygName":"","tel":"15552223061","tjrCardId":"6225350818096155","tjrId":"2309","tjrName":"贾相军","txImgUrl":"","updateBy":"fhyzd","updateDate":1477639823000,"updateName":"富豪银座店","wxCode":"","zcdpId":"9"},"msg":"操作成功","success":true}
+     * jsonStr : {"obj":{"address":"","createDate":1476869191000,"csrq":746640000000,"czye":0.000000,"hyLevel":"1","hyName":"赵宜","hyState":"zc","hykId":"6225350818106666","id":"2759","jfye":5500.000000,"password":"6918bc28bef29408","remark":"","sex":"0","sfz":"370612199308302519","shState":"ok","tel":"15166866385","tjrCardId":"6225350818094666","tjrId":"27","tjrName":"王婷婷","updateBy":"zdjs01","updateDate":1477446205000,"updateName":"总店技术01","zcdpId":"1"},"msg":"操作成功","success":true}
      * success : true
      */
 
     private Object attributes;
     /**
      * address :
-     * id : bbee85b55806ace801580a31c7c508c9
-     * password : c9d09aa7de301532052521dfde7c31da
-     * hykId : 6225350818101141
-     * hyName : 王大寅
+     * id : 2759
+     * password : 6918bc28bef29408
+     * updateName : 总店技术01
+     * createName : null
+     * createBy : null
+     * updateBy : zdjs01
+     * createDate : 1476869191000
+     * updateDate : 1477446205000
+     * remark :
+     * email : null
+     * hykId : 6225350818106666
+     * hyName : 赵宜
      * czye : 0.0
-     * jfye : 7000.0
+     * jfye : 5500.0
      * delflag : null
-     * delDate : 1572247823000
-     * tel : 15552223061
+     * delDate : null
+     * tel : 15166866385
      * shState : ok
-     * zcdpId : 9
-     * tcygId :
+     * zcdpId : 1
+     * tcygId : null
      * hyState : zc
      * hyLevel : 1
      * sex : 0
-     * tjrName : 贾相军
-     * csrq : 159811200000
-     * sfz : 370611197501250313
-     * gddh :
-     * tcygName :
-     * tjrCardId : 6225350818096155
-     * tjrId : 2309
-     * txImgUrl :
-     * wxCode :
-     * remark :
-     * email :
-     * updateName : 富豪银座店
-     * createName : 富豪银座店
-     * createBy : fhyzd
-     * updateBy : fhyzd
-     * createDate : 1477639657000
-     * updateDate : 1477639823000
+     * tjrName : 王婷婷
+     * csrq : 746640000000
+     * sfz : 370612199308302519
+     * gddh : null
+     * tcygName : null
+     * tjrCardId : 6225350818094666
+     * tjrId : 27
+     * txImgUrl : null
+     * wxCode : null
      */
 
     private ObjBean obj;
@@ -99,36 +100,36 @@ public class VipDataEntity {
         private String address;
         private String id;
         private String password;
+        private String updateName;
+        private Object createName;
+        private Object createBy;
+        private String updateBy;
+        private long createDate;
+        private long updateDate;
+        private String remark;
+        private Object email;
         private String hykId;
         private String hyName;
         private double czye;
         private double jfye;
         private Object delflag;
-        private long delDate;
+        private Object delDate;
         private String tel;
         private String shState;
         private String zcdpId;
-        private String tcygId;
+        private Object tcygId;
         private String hyState;
         private String hyLevel;
         private String sex;
         private String tjrName;
         private long csrq;
         private String sfz;
-        private String gddh;
-        private String tcygName;
+        private Object gddh;
+        private Object tcygName;
         private String tjrCardId;
         private String tjrId;
-        private String txImgUrl;
-        private String wxCode;
-        private String remark;
-        private String email;
-        private String updateName;
-        private String createName;
-        private String createBy;
-        private String updateBy;
-        private long createDate;
-        private long updateDate;
+        private Object txImgUrl;
+        private Object wxCode;
 
         public String getAddress() {
             return address;
@@ -152,6 +153,70 @@ public class VipDataEntity {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+
+        public String getUpdateName() {
+            return updateName;
+        }
+
+        public void setUpdateName(String updateName) {
+            this.updateName = updateName;
+        }
+
+        public Object getCreateName() {
+            return createName;
+        }
+
+        public void setCreateName(Object createName) {
+            this.createName = createName;
+        }
+
+        public Object getCreateBy() {
+            return createBy;
+        }
+
+        public void setCreateBy(Object createBy) {
+            this.createBy = createBy;
+        }
+
+        public String getUpdateBy() {
+            return updateBy;
+        }
+
+        public void setUpdateBy(String updateBy) {
+            this.updateBy = updateBy;
+        }
+
+        public long getCreateDate() {
+            return createDate;
+        }
+
+        public void setCreateDate(long createDate) {
+            this.createDate = createDate;
+        }
+
+        public long getUpdateDate() {
+            return updateDate;
+        }
+
+        public void setUpdateDate(long updateDate) {
+            this.updateDate = updateDate;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public Object getEmail() {
+            return email;
+        }
+
+        public void setEmail(Object email) {
+            this.email = email;
         }
 
         public String getHykId() {
@@ -194,11 +259,11 @@ public class VipDataEntity {
             this.delflag = delflag;
         }
 
-        public long getDelDate() {
+        public Object getDelDate() {
             return delDate;
         }
 
-        public void setDelDate(long delDate) {
+        public void setDelDate(Object delDate) {
             this.delDate = delDate;
         }
 
@@ -226,11 +291,11 @@ public class VipDataEntity {
             this.zcdpId = zcdpId;
         }
 
-        public String getTcygId() {
+        public Object getTcygId() {
             return tcygId;
         }
 
-        public void setTcygId(String tcygId) {
+        public void setTcygId(Object tcygId) {
             this.tcygId = tcygId;
         }
 
@@ -282,19 +347,19 @@ public class VipDataEntity {
             this.sfz = sfz;
         }
 
-        public String getGddh() {
+        public Object getGddh() {
             return gddh;
         }
 
-        public void setGddh(String gddh) {
+        public void setGddh(Object gddh) {
             this.gddh = gddh;
         }
 
-        public String getTcygName() {
+        public Object getTcygName() {
             return tcygName;
         }
 
-        public void setTcygName(String tcygName) {
+        public void setTcygName(Object tcygName) {
             this.tcygName = tcygName;
         }
 
@@ -314,84 +379,20 @@ public class VipDataEntity {
             this.tjrId = tjrId;
         }
 
-        public String getTxImgUrl() {
+        public Object getTxImgUrl() {
             return txImgUrl;
         }
 
-        public void setTxImgUrl(String txImgUrl) {
+        public void setTxImgUrl(Object txImgUrl) {
             this.txImgUrl = txImgUrl;
         }
 
-        public String getWxCode() {
+        public Object getWxCode() {
             return wxCode;
         }
 
-        public void setWxCode(String wxCode) {
+        public void setWxCode(Object wxCode) {
             this.wxCode = wxCode;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getUpdateName() {
-            return updateName;
-        }
-
-        public void setUpdateName(String updateName) {
-            this.updateName = updateName;
-        }
-
-        public String getCreateName() {
-            return createName;
-        }
-
-        public void setCreateName(String createName) {
-            this.createName = createName;
-        }
-
-        public String getCreateBy() {
-            return createBy;
-        }
-
-        public void setCreateBy(String createBy) {
-            this.createBy = createBy;
-        }
-
-        public String getUpdateBy() {
-            return updateBy;
-        }
-
-        public void setUpdateBy(String updateBy) {
-            this.updateBy = updateBy;
-        }
-
-        public long getCreateDate() {
-            return createDate;
-        }
-
-        public void setCreateDate(long createDate) {
-            this.createDate = createDate;
-        }
-
-        public long getUpdateDate() {
-            return updateDate;
-        }
-
-        public void setUpdateDate(long updateDate) {
-            this.updateDate = updateDate;
         }
     }
 }

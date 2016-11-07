@@ -5,8 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.minhuitianxia.myapplication.MyApplication;
 import com.minhuitianxia.myapplication.R;
+import com.minhuitianxia.myapplication.entity.VipDataEntity;
+
+import org.xutils.common.Callback;
+import org.xutils.http.HttpMethod;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 /**
  * 会员信息
@@ -15,14 +25,23 @@ import com.minhuitianxia.myapplication.R;
 public class VipBasicActivity extends Activity implements View.OnClickListener{
 
     private Button bt1,bt2,bt3,bt4;
+    private TextView hyname,tv_balance,tv_integral;
+    private String strname;
+    private double strbalance;
+    private double strintegral;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vip_activity);
+        vipdata();
         init();
+
     }
 
     private void init() {
+        hyname = (TextView) findViewById(R.id.hyname);
+        tv_balance = (TextView) findViewById(R.id.tv_balance);
+        tv_integral = (TextView) findViewById(R.id.tv_integral);
         bt1 = (Button) findViewById(R.id.bt1);
         bt2 = (Button) findViewById(R.id.bt2);
         bt3 = (Button) findViewById(R.id.bt3);
@@ -53,4 +72,52 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
 
         }
     }
+    private void vipdata(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RequestParams requestParams =
+                        new RequestParams(getResources().getString(R.string.http_service_data));
+                requestParams.addBodyParameter("hykId", MyApplication.getInstance().getZhangHao());
+                requestParams.addBodyParameter("miKey",getResources().getString(R.string.miKey));
+                x.http().request(HttpMethod.POST, requestParams, new Callback.CommonCallback<String>(){
+
+                    @Override
+                    public void onSuccess(String result) {
+                        Gson gson = new Gson();
+                        VipDataEntity dataEntity = gson.fromJson(result,VipDataEntity.class);
+                        boolean issuccess = dataEntity.isSuccess();
+                        if (issuccess){
+                            strname = dataEntity.getObj().getHyName();
+                            strbalance = dataEntity.getObj().getCzye();
+                            strintegral = dataEntity.getObj().getJfye();
+                            hyname.setText(strname);
+                            tv_balance.setText(strbalance+"");
+                            tv_integral.setText(strintegral+"");
+                        }else {
+                            Toast.makeText(VipBasicActivity.this, getResources().getString(R.string.login_unusual), Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(Throwable ex, boolean isOnCallback) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException cex) {
+
+                    }
+
+                    @Override
+                    public void onFinished() {
+
+                    }
+                });
+            }
+        }).start();
+    }
+
 }

@@ -6,218 +6,269 @@
     android:orientation="vertical">
 
     <include layout="@layout/top_back" />
-
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
-            <TextView
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            >
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="会员姓名"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/te_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="谁淫荡啊我淫荡"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员姓名:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="张三"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="会员卡号"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
-
-            <TextView
-                android:id="@+id/te_car"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="6228350818101111"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员卡号:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_hycar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="6225350818091234"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="手机号码"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
-
-            <TextView
-                android:id="@+id/te_number"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="13589825817"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员性别:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="男"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="身份证号"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
-
-            <TextView
-                android:id="@+id/te_idcar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="370612199310282587"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员手机号:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="15463259856"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="推荐人姓名"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
-
-            <TextView
-                android:id="@+id/te_tname"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="你是谁啊我是谁"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="会员身份证:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_idcar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="张三"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="推荐人卡号"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
-
-            <TextView
-                android:id="@+id/te_tcar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="你是谁啊我是谁"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp">
-
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开卡店铺:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="总店"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="注册店铺"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
-
-            <TextView
-                android:id="@+id/te_shop"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/tv_border_shape"
-                android:gravity="center"
-                android:text="富豪银座店"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </TableRow>
-    </TableLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="推荐人姓名:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_tname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="李四"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="推荐人卡号:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/tv_tcar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="6225350818104561"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/guide_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
 </LinearLayout>

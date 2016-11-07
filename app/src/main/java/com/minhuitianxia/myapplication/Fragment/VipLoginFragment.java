@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.minhuitianxia.myapplication.MyApplication;
 import com.minhuitianxia.myapplication.R;
+import com.minhuitianxia.myapplication.entity.VipDataEntity;
 import com.minhuitianxia.myapplication.entity.VipLoginEntity;
 import com.minhuitianxia.myapplication.ui.VipBasicActivity;
 import com.minhuitianxia.myapplication.ui.VipRechargeAvtivity;
