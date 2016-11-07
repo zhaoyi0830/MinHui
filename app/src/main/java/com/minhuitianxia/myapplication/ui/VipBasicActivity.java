@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.minhuitianxia.myapplication.R;
 
 /**
+ * 会员信息
  * Created by Administrator on 2016/11/6 0006.
  */
 public class VipBasicActivity extends Activity implements View.OnClickListener{
