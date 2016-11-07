@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //秘钥
+    <string name="miKey">nB6bcwbZe8ExtSKj</string>
+    //登录接口
+    <string name="http_service_login">http://59.110.5.53/hy/hyCommonController.do?checkHyPwdForApp</string>
+    //修改密码
+    <string name="http_service_pass">http://59.110.5.53/hy/hyCommonController.do?modifyHyPwdForApp</string>
+    //会员资料
+    <string name="http_service_data">http://59.110.5.53/hy/hyCommonController.do?getHyByHykIdForApp</string>
+
+</resources>
