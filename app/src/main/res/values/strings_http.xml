@@ -8,5 +8,6 @@
     <string name="http_service_pass">http://59.110.5.53/hy/hyCommonController.do?modifyHyPwdForApp</string>
     //会员资料
     <string name="http_service_data">http://59.110.5.53/hy/hyCommonController.do?getHyByHykIdForApp</string>
-
+    //充值记录
+    <string name="http_service_chongzhi">http://59.110.5.53/hy/hyCommonController.do?getCzjlList</string>
 </resources>

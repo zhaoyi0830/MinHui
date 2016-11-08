@@ -1,6 +1,7 @@
 package com.minhuitianxia.myapplication;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         iniView();
+        Intent intentGet = getIntent();
+        String isExit = intentGet.getStringExtra("isExit");
         if (savedInstanceState == null) {
             // 记录当前Fragment
             mCurrentTag = FragmentTag.TAG_SYNOPSIS;
@@ -72,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
                             mCurrentTag.getTag()).add(R.id.main_fragment,mallF,mTAG_MALL.getTag()).add(R.id.main_fragment,vip,TAG_VIP.getTag()).hide(mallF).hide(vip).show(mCurrentFragment).commit();
             Drawable[] compoundDrawables = mBtnTabs.get(1).getCompoundDrawables();
 
+        }
+        if("12".equals(isExit)){
+            switchFragment(FragmentTag.TAG_VIP );
+            radioGroup.check(R.id. rb_vip);
+            isCurrF = 3;
         }
     }
     private void iniView() {

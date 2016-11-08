@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="张三"
+                    android:text="370612199605021234"
                     android:textSize="16sp"
                     android:layout_marginLeft="20dp"
                     />
