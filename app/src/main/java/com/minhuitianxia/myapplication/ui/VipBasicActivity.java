@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import org.xutils.x;
 public class VipBasicActivity extends Activity implements View.OnClickListener{
 
     private Button bt1,bt2,bt3,bt4;
-    private TextView hyname,tv_balance,tv_integral,quit;
+    private TextView hyname,tv_balance,tv_integral,quit,tv_yue,tv_jifen;
     private String strname;
     private double strbalance;//余额
     private double strintegral;//积分
@@ -53,6 +54,8 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
         hyname = (TextView) findViewById(R.id.hyname);
         tv_balance = (TextView) findViewById(R.id.tv_balance);
         tv_integral = (TextView) findViewById(R.id.tv_integral);
+        tv_yue = (TextView) findViewById(R.id.tv_yue);
+        tv_jifen = (TextView) findViewById(R.id.tv_jifen);
         bt1 = (Button) findViewById(R.id.bt1);
         bt2 = (Button) findViewById(R.id.bt2);
         bt3 = (Button) findViewById(R.id.bt3);
@@ -61,6 +64,8 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
         bt2.setOnClickListener(this);
         bt4.setOnClickListener(this);
         quit.setOnClickListener(this);
+        Typeface face = Typeface.createFromAsset(getAssets() ,"fonts/lier.ttf");
+
     }
 
     @Override

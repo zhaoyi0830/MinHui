@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RadioButton rb_introduce;//介绍
-//    private RadioButton rb_merchant;//积分
+    //    private RadioButton rb_merchant;//积分
     private RadioButton rb_vip;//会员
     private RadioButton rb_mall;//商城
     private RadioGroup rgp_main;
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private VipLoginFragment vip;
     private Mall_Fragment mallF;
     private Synopsis_Vertical_Fragment synopsisF;
-    private long firstTime =0;//第一次按返回键的时间
-    private int isCurrF ;
-    private boolean isCanBack =false;
+    private long firstTime = 0;//第一次按返回键的时间
+    private int isCurrF;
+    private boolean isCanBack = false;
 
     /**
      * 当前Fragment的key
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTag mCurrentTag;
     private FragmentTag mTAG_MALL;
     private FragmentTag TAG_VIP;
+    private FragmentTag mTAG_SYNOPSIS;
     /**
      * 选项卡按钮数组
      */
@@ -55,72 +56,87 @@ public class MainActivity extends AppCompatActivity {
     private Fragment mCurrentFragment;
 
     private RadioGroup radioGroup;
+    private String isExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        iniView();
         Intent intentGet = getIntent();
-        String isExit = intentGet.getStringExtra("isExit");
+        isExit = intentGet.getStringExtra("isExit");
+        iniView();
         if (savedInstanceState == null) {
-            // 记录当前Fragment
-            mCurrentTag = FragmentTag.TAG_SYNOPSIS;
-            mTAG_MALL = FragmentTag.TAG_MALL;
-            TAG_VIP = FragmentTag.TAG_VIP;
-            mCurrentFragment= new Synopsis_Vertical_Fragment();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.main_fragment, mCurrentFragment,
-                            mCurrentTag.getTag()).add(R.id.main_fragment,mallF,mTAG_MALL.getTag()).add(R.id.main_fragment,vip,TAG_VIP.getTag()).hide(mallF).hide(vip).show(mCurrentFragment).commit();
-            Drawable[] compoundDrawables = mBtnTabs.get(1).getCompoundDrawables();
+            if ("12".equals(isExit)) {
+                // 记录当前Fragment
+                mCurrentTag = FragmentTag.TAG_VIP;
+                mTAG_MALL = FragmentTag.TAG_MALL;
+                mTAG_SYNOPSIS = FragmentTag.TAG_SYNOPSIS;
+                mCurrentFragment = new VipLoginFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.main_fragment, mCurrentFragment,
+                                mCurrentTag.getTag()).add(R.id.main_fragment, mallF, mTAG_MALL.getTag())
+                        .add(R.id.main_fragment, synopsisF, mTAG_SYNOPSIS.getTag())
+                        .hide(mallF).hide(synopsisF).show(mCurrentFragment).commit();
 
+            } else {
+                // 记录当前Fragment
+                mCurrentTag = FragmentTag.TAG_SYNOPSIS;
+                mTAG_MALL = FragmentTag.TAG_MALL;
+                TAG_VIP = FragmentTag.TAG_VIP;
+                mCurrentFragment = new Synopsis_Vertical_Fragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.main_fragment, mCurrentFragment,
+                                mCurrentTag.getTag()).add(R.id.main_fragment, mallF, mTAG_MALL.getTag())
+                        .add(R.id.main_fragment, vip, TAG_VIP.getTag())
+                        .hide(mallF).hide(vip).show(mCurrentFragment).commit();
+
+            }
         }
-        if("12".equals(isExit)){
-            switchFragment(FragmentTag.TAG_VIP );
-            radioGroup.check(R.id. rb_vip);
-            isCurrF = 3;
-        }
+
     }
+
     private void iniView() {
-        radioGroup  = ((RadioGroup) findViewById(R.id.rgp_main));
+        radioGroup = ((RadioGroup) findViewById(R.id.rgp_main));
         radioGroup.check(R.id.rb_introduce);
-        mBtnTabs = new ArrayList<RadioButton>();
-        mBtnTabs.add((RadioButton) findViewById(R.id.rb_mall));
-        mBtnTabs.add((RadioButton) findViewById(R.id.rb_introduce));
-        mBtnTabs.add((RadioButton) findViewById(R.id.rb_vip));
+
         rb_introduce = (RadioButton) findViewById(R.id.rb_introduce);
 //        rb_merchant = (RadioButton) findViewById(R.id.rb_merchant);
         rb_vip = (RadioButton) findViewById(R.id.rb_vip);
         rb_mall = (RadioButton) findViewById(R.id.rb_mall);
         rgp_main = (RadioGroup) findViewById(R.id.rgp_main);
+
         introuce = new Introduce_Fragment();//公司介绍
         merchant = new Merchant_Fragment();//积分
         vip = new VipLoginFragment();//会员
         mallF = new Mall_Fragment();//商城
         synopsisF = new Synopsis_Vertical_Fragment();//竖向滑动公司简介
-        rb_introduce.setChecked(true);
-//        initFragment(synopsisF);
+        if ("12".equals(isExit)) {
+            rb_vip.setChecked(true);
+        } else {
+            rb_introduce.setChecked(true);
+        }
         rgp_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.rb_mall://商城
 //                        initFragment(mallF);
-                        switchFragment(FragmentTag.TAG_MALL );
-                        radioGroup.check(R.id. rb_mall);
-                        isCurrF=1;
+                        switchFragment(FragmentTag.TAG_MALL);
+                        radioGroup.check(R.id.rb_mall);
+                        isCurrF = 1;
                         break;
                     case R.id.rb_introduce://介绍
 //                        initFragment(synopsisF);
-                        switchFragment(FragmentTag.TAG_SYNOPSIS );
-                        radioGroup.check(R.id. rb_introduce);
+                        switchFragment(FragmentTag.TAG_SYNOPSIS);
+                        radioGroup.check(R.id.rb_introduce);
                         isCurrF = 2;
                         break;
                     case R.id.rb_vip://会员
 //                        initFragment(vip);
-                        switchFragment(FragmentTag.TAG_VIP );
-                        radioGroup.check(R.id. rb_vip);
+                        switchFragment(FragmentTag.TAG_VIP);
+                        radioGroup.check(R.id.rb_vip);
                         isCurrF = 3;
                         break;
                 }
@@ -168,18 +184,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK){
-            if(System.currentTimeMillis()-firstTime>2000){
-                if(isCurrF==1){
-                    isCanBack=mallF.onBackPressedFfragment();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - firstTime > 2000) {
+                if (isCurrF == 1) {
+                    isCanBack = mallF.onBackPressedFfragment();
                 }
-                if(!isCanBack){
+                if (!isCanBack) {
                     Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
                     firstTime = System.currentTimeMillis();
                 }
-            }else{
+            } else {
                 System.exit(0);
             }
         }
