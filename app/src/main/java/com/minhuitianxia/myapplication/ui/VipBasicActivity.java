@@ -62,9 +62,15 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
         bt4 = (Button) findViewById(R.id.bt4);
         bt1.setOnClickListener(this);
         bt2.setOnClickListener(this);
+        bt3.setOnClickListener(this);
         bt4.setOnClickListener(this);
         quit.setOnClickListener(this);
         Typeface face = Typeface.createFromAsset(getAssets() ,"fonts/lier.ttf");
+        hyname.setTypeface(face);
+        tv_balance.setTypeface(face);
+        tv_integral.setTypeface(face);
+        tv_yue.setTypeface(face);
+        tv_jifen.setTypeface(face);
 
     }
 
@@ -72,7 +78,7 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()){
-            case R.id.bt1:
+            case R.id.bt1://会员基本资料
                 intent = new Intent(this, VipDataActivity.class);
                 intent.putExtra("name",strname);
                 intent.putExtra("sex",strsex);
@@ -83,17 +89,18 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
                 intent.putExtra("tjrcar",strtjcar);
                 startActivity(intent);
                 break;
-            case R.id.bt2:
+            case R.id.bt2://会员充值记录
                 intent = new Intent(this,Vip_ChongZhiJiLu.class);
                 startActivity(intent);
                 break;
-            case R.id.bt3:
+            case R.id.bt3://会员消费记录
+                startActivity(new Intent(this,Vip_XiaoFeiActivity.class));
                 break;
-            case R.id.bt4:
+            case R.id.bt4://会员密码修改
                 intent = new Intent(this,VipPasswordActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.quit:
+            case R.id.quit://退出登录
                 logout();
                 break;
 
@@ -121,16 +128,15 @@ public class VipBasicActivity extends Activity implements View.OnClickListener{
                             strsex = dataEntity.getObj().getSex();
                             strphone = dataEntity.getObj().getTel();
                             stridcar = dataEntity.getObj().getSfz();
-                            strshop = dataEntity.getObj().getUpdateName();
+                            strshop = dataEntity.getObj().getUpdateName().toString();
                             strtjname = dataEntity.getObj().getTjrName();
                             strtjcar = dataEntity.getObj().getTjrCardId();
-                            hyname.setText(strname);
+                            hyname.setText(strname+"");
                             tv_balance.setText(strbalance+"");
                             tv_integral.setText(strintegral+"");
                         }else {
                             Toast.makeText(VipBasicActivity.this, getResources().getString(R.string.login_unusual), Toast.LENGTH_SHORT).show();
                         }
-
 
                     }
 

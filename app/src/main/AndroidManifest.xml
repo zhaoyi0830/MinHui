@@ -27,6 +27,7 @@
         <activity android:name=".ui.VipRechargeAvtivity"></activity>
         <activity android:name=".ui.VipBasicActivity"></activity>
         <activity android:name=".ui.Vip_ChongZhiJiLu"></activity>
+        <activity android:name=".ui.Vip_XiaoFeiActivity"></activity>
     </application>
 
 </manifest>

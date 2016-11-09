@@ -8,6 +8,8 @@
     <color name="black">#000</color>
     <color name="white">#fff</color>
     <color name="gray">#d2d2d2</color>
+    <color name="chongzhi_gray">#ececec</color>
+    <color name="line_gray">#848484</color>
     <color name="guide_gray">#b1b1b1</color>
     <color name="guide_bule">#245db7</color>
 </resources>

@@ -5,38 +5,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.minhuitianxia.myapplication.R;
-import com.minhuitianxia.myapplication.entity.VipChongZhi_Entity;
 import com.minhuitianxia.myapplication.entity.VipChongZhi_Obj;
+import com.minhuitianxia.myapplication.entity.VipXiaoFei_Obj;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 /**
- * 会员充值记录
+ * 会员消费记录
  * Created by Administrator on 2016/11/8 0008.
  */
-public class VipChongZhi_Adapter extends BaseAdapter {
-    private List<VipChongZhi_Obj> Chongzhi_list;
+public class VipXiaoFei_Adapter extends BaseAdapter {
+    private List<VipXiaoFei_Obj> XiaoFei_list;
     private Context context;
 
-    public VipChongZhi_Adapter(List<VipChongZhi_Obj> chongzhi_list, Context context) {
-        this.Chongzhi_list = chongzhi_list;
+    public VipXiaoFei_Adapter(List<VipXiaoFei_Obj> xiaofei_list, Context context) {
+        this.XiaoFei_list = xiaofei_list;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return Chongzhi_list.size();
+        return XiaoFei_list.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return Chongzhi_list.get(position);
+        return XiaoFei_list.get(position);
     }
 
     @Override
@@ -49,25 +48,28 @@ public class VipChongZhi_Adapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.vip_chongzhiadapter,null);
-            holder.mTv_czmoney = (TextView) convertView.findViewById(R.id.tv_czmoney);
-            holder.mTv_czshop = (TextView) convertView.findViewById(R.id.tv_czshop);
-            holder.mTv_cztime = (TextView) convertView.findViewById(R.id.tv_cztime);
+            convertView = LayoutInflater.from(context).inflate(R.layout.vip_xiaofeiadapter,null);
+            holder.mTv_xfcode = (TextView) convertView.findViewById(R.id.tv_xfcode);
+            holder.mTv_xfmoney = (TextView) convertView.findViewById(R.id.tv_xfmoney);
+            holder.mTv_xfshop = (TextView) convertView.findViewById(R.id.tv_xfshop);
+            holder.mTv_xftime = (TextView) convertView.findViewById(R.id.tv_xftime);
             convertView.setTag(holder);
         }else{
             holder= (ViewHolder) convertView.getTag();
         }
-        VipChongZhi_Obj vipchongzhi=Chongzhi_list.get(position);
-        holder.mTv_czmoney.setText(vipchongzhi.getCzJe()+"");
-        holder.mTv_czshop.setText(vipchongzhi.getDpName()+"");
-        holder.mTv_cztime.setText(getDateTimeFromMillisecond(vipchongzhi.getCreateDate().getTime())+"");
+        VipXiaoFei_Obj vipXiaoFei=XiaoFei_list.get(position);
+        holder.mTv_xfcode.setText(vipXiaoFei.getDdCode()+"");
+        holder.mTv_xfmoney.setText(vipXiaoFei.getDdMoney()+"");
+        holder.mTv_xfshop.setText(vipXiaoFei.getDpName()+"");
+        holder.mTv_xftime.setText(getDateTimeFromMillisecond(vipXiaoFei.getCreateDate().getTime())+"");
         return convertView;
     }
 
     public class ViewHolder {
-        private TextView mTv_czmoney;//充值金额
-        private TextView mTv_czshop;//充值店铺
-        private TextView mTv_cztime;//充值时间
+        private TextView mTv_xfcode;//消费单号
+        private TextView mTv_xfmoney;//消费金额
+        private TextView mTv_xfshop;//消费店铺
+        private TextView mTv_xftime;//消费时间
     }
     public static String getDateTimeFromMillisecond(Long millisecond){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

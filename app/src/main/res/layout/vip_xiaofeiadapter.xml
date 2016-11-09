@@ -18,52 +18,12 @@
             android:gravity="center"
             >
             <TextView
-                android:id="@+id/tv_czmoney"
+                android:id="@+id/tv_xfcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="充值金额"
+                android:text="消费单号"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                />
-        </LinearLayout>
-        <!--<TextView-->
-            <!--android:layout_width="0.5dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@color/line_gray"-->
-            <!--/>-->
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:gravity="center"-->
-            <!--&gt;-->
-            <!--<TextView-->
-                <!--android:id="@+id/tv_changemoney"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="变动后金额"-->
-                <!--android:textColor="@color/black"-->
-                <!--android:textSize="14sp"-->
-                <!--/>-->
-        <!--</LinearLayout>-->
-        <TextView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:background="@color/line_gray"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            >
-            <TextView
-                android:id="@+id/tv_czshop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="充值店铺"
-                android:textSize="14sp"
-                android:textColor="@color/black"
                 />
         </LinearLayout>
         <TextView
@@ -78,10 +38,50 @@
             android:gravity="center"
             >
             <TextView
-                android:id="@+id/tv_cztime"
+                android:id="@+id/tv_xfmoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="充值时间"
+                android:text="消费金额"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_gray"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/tv_xfshop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消费店铺"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_gray"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/tv_xftime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消费时间"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 />

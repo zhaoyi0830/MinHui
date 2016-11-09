@@ -10,10 +10,14 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.minhuitianxia.myapplication.Adapter.VipChongZhi_Adapter;
+import com.minhuitianxia.myapplication.Adapter.VipXiaoFei_Adapter;
 import com.minhuitianxia.myapplication.MyApplication;
 import com.minhuitianxia.myapplication.R;
 import com.minhuitianxia.myapplication.entity.VipChongZhi_Entity;
 import com.minhuitianxia.myapplication.entity.VipChongZhi_Obj;
+import com.minhuitianxia.myapplication.entity.VipLoginEntity;
+import com.minhuitianxia.myapplication.entity.VipXiaoFei_Entity;
+import com.minhuitianxia.myapplication.entity.VipXiaoFei_Obj;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,56 +29,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 会员充值记录
- * Created by Administrator on 2016/11/8 0008.
+ * 会员消费记录
+ * Created by Administrator on 2016/11/9 0009.
  */
-public class Vip_ChongZhiJiLu extends AppCompatActivity implements View.OnClickListener{
-    private ImageView back;
+public class Vip_XiaoFeiActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView title_top_bar;
-    private TextView mTv_czmoney;
-    private TextView mTv_czshop;
-    private TextView mTv_cztime;
-    private VipChongZhi_Entity vipentity;
-    private List<VipChongZhi_Entity> listChongZhi = new ArrayList<>();
-    private List<VipChongZhi_Obj> listObj = new ArrayList<>();
-    private ListView lv_chongzhijilu;
-    private VipChongZhi_Adapter vipadapter;
+    private ImageView back;
+    private TextView mTv_xfcode;
+    private TextView mTv_xfmoney;
+    private TextView mTv_xfshop;
+    private TextView mTv_xftime;
+    private ListView mLv_xfjilu;
+
+    private VipXiaoFei_Entity vipentity;
+    private List<VipXiaoFei_Obj> listObj = new ArrayList<>();
+    private VipXiaoFei_Adapter vipadapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vip_chongzhijilu);
+        setContentView(R.layout.vip_xiaofei);
         iniView();
         getHttp();
     }
 
     private void iniView() {
+        mTv_xfcode = (TextView) findViewById(R.id.tv_xfcode);
+        mTv_xfmoney = (TextView) findViewById(R.id.tv_xfmoney);
+        mTv_xfshop = (TextView) findViewById(R.id.tv_xfshop);
+        mTv_xftime = (TextView) findViewById(R.id.tv_xftime);
+        mLv_xfjilu = (ListView) findViewById(R.id.lv_xfjilu);
         back = (ImageView) findViewById(R.id.back);
         title_top_bar = (TextView) findViewById(R.id.title_top_bar);
-        mTv_czmoney = (TextView) findViewById(R.id.tv_czmoney);
-        mTv_czshop = (TextView) findViewById(R.id.tv_czshop);
-        mTv_cztime = (TextView) findViewById(R.id.tv_cztime);
-        lv_chongzhijilu = (ListView) findViewById(R.id.lv_chongzhijilu);
+        title_top_bar.setText("会员消费记录");
         back.setOnClickListener(this);
-        title_top_bar.setText("会员充值记录");
-        vipadapter = new VipChongZhi_Adapter(listObj,this);
-        lv_chongzhijilu.setAdapter(vipadapter);
+        vipadapter = new VipXiaoFei_Adapter(listObj,this);
+        mLv_xfjilu.setAdapter(vipadapter);
         vipadapter.notifyDataSetChanged();
-    }
 
+    }
     private void getHttp() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 final RequestParams requestParams =
-                        new RequestParams(getResources().getString(R.string.http_service_chongzhi));
+                        new RequestParams(getResources().getString(R.string.http_service_xiaofei));
                 requestParams.addBodyParameter("hykId", MyApplication.getInstance().getZhangHao());
                 requestParams.addBodyParameter("miKey",getResources().getString(R.string.miKey));
                 x.http().post(requestParams, new Callback.CommonCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
-                            Gson gson = new Gson();
-                            vipentity =gson.fromJson(result,VipChongZhi_Entity.class);
-                            String strVip=vipentity.getObj().toString();
+                        Gson gson = new Gson();
+                        vipentity =gson.fromJson(result,VipXiaoFei_Entity.class);
+                        String strVip=vipentity.getObj().toString();
 //                            VipChongZhi_Obj objEntity=gson.fromJson(strVip,VipChongZhi_Obj.class);
 //                            listObj.add(objEntity);
 //                            vipadapter.notifyDataSetChanged();
@@ -84,17 +90,20 @@ public class Vip_ChongZhiJiLu extends AppCompatActivity implements View.OnClickL
 //                            JSONArray json = new JSONObject(strVip).getJSONArray("DetailInfo");
                             for (int i = 0; i < json.length(); i++) {
                                 JSONObject j = (JSONObject) json.get(i);
-                                int money = j.getInt("czJe");
-                                String czdp = j.getString("dpName");
+                                String ddCode = j.getString("ddCode");
+                                int ddMoney = j.getInt("ddMoney");
+                                String xfdp = j.getString("dpName");
                                 JSONObject jsonObj = new JSONObject(j.getString("createDate"));
-                                long cztime = jsonObj.getLong("time");
-                                VipChongZhi_Obj vipcz = new VipChongZhi_Obj();
-                                VipChongZhi_Obj.CreateDateBean createDate = new VipChongZhi_Obj.CreateDateBean();
-                                vipcz.setCzJe(money);
-                                vipcz.setDpName(czdp);
-                                createDate.setTime(cztime);
-                                vipcz.setCreateDate(createDate);
-                                listObj.add(vipcz);
+                                long xftime = jsonObj.getLong("time");
+                                VipXiaoFei_Obj vipxf = new VipXiaoFei_Obj();
+                                VipXiaoFei_Obj.CreateDateBean createDate = new VipXiaoFei_Obj.CreateDateBean();
+                                vipxf.setDdCode(ddCode);
+                                vipxf.setDdMoney(ddMoney);
+                                vipxf.setDpName(xfdp);
+                                createDate.setTime(xftime);
+                                vipxf.setCreateDate(createDate);
+
+                                listObj.add(vipxf);
                                 vipadapter.notifyDataSetChanged();
                             }
                         } catch (Exception e) {

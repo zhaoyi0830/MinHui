@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -30,6 +31,7 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
     private EditText edittext_old_pwd,edittext_new_pwd1,edittext_new_pwd2;
     private Button button_save;
     private ImageView back;
+    private TextView title_top_bar;
     private String Sold_pwd;
     private String Snew_pwd1;
     private String Snew_pwd2;
@@ -41,11 +43,14 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
     }
 
     private void init() {
+        title_top_bar = (TextView) findViewById(R.id.title_top_bar);
         edittext_old_pwd = (EditText) findViewById(R.id.edittext_old_pwd);
         edittext_new_pwd1 = (EditText) findViewById(R.id.edittext_new_pwd);
         edittext_new_pwd2 = (EditText) findViewById(R.id.edittext_new_pwd2);
         button_save = (Button) findViewById(R.id.button_save);
         back = (ImageView) findViewById(R.id.back);
+        title_top_bar.setText("会员修改密码");
+
         button_save.setOnClickListener(this);
         back.setOnClickListener(this);
     }

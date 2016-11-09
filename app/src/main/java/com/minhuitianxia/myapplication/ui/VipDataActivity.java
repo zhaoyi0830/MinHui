@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +23,8 @@ import com.minhuitianxia.myapplication.entity.VipLoginEntity;
 public class VipDataActivity extends Activity implements View.OnClickListener{
     private TextView tv_name,tv_car,tv_sex,tv_number,tv_idcar,tv_tname,tv_tcar,tv_shop;
     private ImageView back;
+    private TextView title_top_bar;
+    private TextView tname,tcar,tsex,tphone,tidcar,ttname,ttcar,tshop;
 
     private String name;
     private String idcar;
@@ -48,6 +51,8 @@ public class VipDataActivity extends Activity implements View.OnClickListener{
     }
 
     private void init() {
+        title_top_bar = (TextView) findViewById(R.id.title_top_bar);
+        back = (ImageView) findViewById(R.id.back);
 
         tv_name = (TextView) findViewById(R.id.tv_name);
         tv_car = (TextView) findViewById(R.id.tv_hycar);
@@ -57,8 +62,36 @@ public class VipDataActivity extends Activity implements View.OnClickListener{
         tv_tname = (TextView) findViewById(R.id.tv_tname);
         tv_tcar = (TextView) findViewById(R.id.tv_tcar);
         tv_shop = (TextView) findViewById(R.id.tv_shop);
-        back = (ImageView) findViewById(R.id.back);
 
+        tname = (TextView) findViewById(R.id.name);
+        tcar = (TextView) findViewById(R.id.car);
+        tsex = (TextView) findViewById(R.id.sex);
+        tphone = (TextView) findViewById(R.id.phone);
+        tidcar = (TextView) findViewById(R.id.idcar);
+        ttname = (TextView) findViewById(R.id.tname);
+        ttcar = (TextView) findViewById(R.id.tcar);
+        tshop = (TextView) findViewById(R.id.shop);
+
+        Typeface face = Typeface.createFromAsset(getAssets() ,"fonts/lier.ttf");
+        tv_name.setTypeface(face);
+        tv_car.setTypeface(face);
+        tv_sex.setTypeface(face);
+        tv_number.setTypeface(face);
+        tv_idcar.setTypeface(face);
+        tv_tcar.setTypeface(face);
+        tv_shop.setTypeface(face);
+        tv_tname.setTypeface(face);
+
+        tname.setTypeface(face);
+        tcar.setTypeface(face);
+        tsex.setTypeface(face);
+        tphone.setTypeface(face);
+        tidcar.setTypeface(face);
+        ttname.setTypeface(face);
+        ttcar.setTypeface(face);
+        tshop.setTypeface(face);
+
+        title_top_bar.setText("会员基本资料");
         tv_name.setText(name+"");
         tv_car.setText(MyApplication.getInstance().getZhangHao());
         if ("0".equals(sex)){
@@ -72,8 +105,6 @@ public class VipDataActivity extends Activity implements View.OnClickListener{
         tv_tname.setText(tjrname+"");
         tv_tcar.setText(tjrcar+"");
         back.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -82,7 +113,6 @@ public class VipDataActivity extends Activity implements View.OnClickListener{
             case R.id.back:
                 onBackPressed();
                 break;
-
         }
 
     }

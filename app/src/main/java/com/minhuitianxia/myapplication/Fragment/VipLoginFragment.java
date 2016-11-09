@@ -78,6 +78,9 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
                 }
             }
         });
+        if(sp.getString("uname",null)!=null){
+            lg_username.setText(sp.getString("uname", null));
+        }
 
 //        if (sp.getBoolean("checkboxBoolean", false)) {
 //            lg_username.setText(sp.getString("uname", null));
@@ -119,11 +122,11 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
 //            editor.putBoolean("checkboxBoolean", false);
 //            editor.commit();
 //        } else {
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putString("uname", StrUserName);
-//            editor.putString("upswd", StrPassWord);
-            editor.putBoolean("checkboxBoolean", true);
-            editor.commit();
+//            SharedPreferences.Editor editor = sp.edit();
+//            editor.putString("uname", StrUserName);
+////            editor.putString("upswd", StrPassWord);
+//            editor.putBoolean("checkboxBoolean", true);
+//            editor.commit();
 
 //        }
 
@@ -142,6 +145,9 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
                             VipLoginEntity loginEntity = gson.fromJson(result, VipLoginEntity.class);
                             boolean isSuccess = loginEntity.isSuccess();
                             if (isSuccess) {
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("uname", StrUserName);
+                                editor.commit();
                                 loginEntity.setZhanghao(StrUserName);
                                 MyApplication.getInstance().setZhanghao(loginEntity);
                                 Toast.makeText(getActivity(), getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
