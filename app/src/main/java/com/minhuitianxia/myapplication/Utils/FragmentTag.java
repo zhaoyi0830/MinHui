@@ -7,7 +7,8 @@ package com.minhuitianxia.myapplication.Utils;
 public enum FragmentTag {
 	TAG_MALL("com.minhuitianxia.myapplication.Fragment.Mall_Fragment"),
 	TAG_SYNOPSIS("com.minhuitianxia.myapplication.Fragment.Synopsis_Vertical_Fragment"),
-	TAG_VIP("com.minhuitianxia.myapplication.Fragment.VipLoginFragment");
+	TAG_VIP("com.minhuitianxia.myapplication.Fragment.VipLoginFragment"),
+	TAG_VIPINFO("com.minhuitianxia.myapplication.Fragment.Vip_Fragment");
 
 
 	String tag;

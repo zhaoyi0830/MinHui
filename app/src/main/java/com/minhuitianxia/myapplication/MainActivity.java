@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
+import android.os.Debug;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,11 +23,13 @@ import com.minhuitianxia.myapplication.Fragment.Merchant_Fragment;
 import com.minhuitianxia.myapplication.Fragment.Synopsis_Vertical_Fragment;
 import com.minhuitianxia.myapplication.Fragment.VipLoginFragment;
 import com.minhuitianxia.myapplication.Fragment.Vip_Fragment;
+import com.minhuitianxia.myapplication.MyOnClick.MyButton;
+import com.minhuitianxia.myapplication.MyOnClick.MyOnClickListener;
 import com.minhuitianxia.myapplication.Utils.FragmentTag;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private RadioButton rb_introduce;//介绍
     //    private RadioButton rb_merchant;//积分
     private RadioButton rb_vip;//会员
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Introduce_Fragment introuce;
     private Merchant_Fragment merchant;
     private VipLoginFragment vip;
+//    private Vip_Fragment vip_fragment;
     private Mall_Fragment mallF;
     private Synopsis_Vertical_Fragment synopsisF;
     private long firstTime = 0;//第一次按返回键的时间
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTag mTAG_MALL;
     private FragmentTag TAG_VIP;
     private FragmentTag mTAG_SYNOPSIS;
+    private FragmentTag mTAG_VIPINFO;
     /**
      * 选项卡按钮数组
      */
@@ -57,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RadioGroup radioGroup;
     private String isExit;
-
+    private Boolean ISLogin = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +72,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intentGet = getIntent();
         isExit = intentGet.getStringExtra("isExit");
         iniView();
+
         if (savedInstanceState == null) {
             if ("12".equals(isExit)) {
                 // 记录当前Fragment
                 mCurrentTag = FragmentTag.TAG_VIP;
                 mTAG_MALL = FragmentTag.TAG_MALL;
                 mTAG_SYNOPSIS = FragmentTag.TAG_SYNOPSIS;
+                mTAG_VIPINFO = FragmentTag.TAG_VIPINFO;
+
                 mCurrentFragment = new VipLoginFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
@@ -84,16 +94,26 @@ public class MainActivity extends AppCompatActivity {
                 mCurrentTag = FragmentTag.TAG_SYNOPSIS;
                 mTAG_MALL = FragmentTag.TAG_MALL;
                 TAG_VIP = FragmentTag.TAG_VIP;
+                mTAG_VIPINFO = FragmentTag.TAG_VIPINFO;
+
                 mCurrentFragment = new Synopsis_Vertical_Fragment();
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .add(R.id.main_fragment, mCurrentFragment,
-                                mCurrentTag.getTag()).add(R.id.main_fragment, mallF, mTAG_MALL.getTag())
+                        .add(R.id.main_fragment, mCurrentFragment,mCurrentTag.getTag())
+                        .add(R.id.main_fragment, mallF, mTAG_MALL.getTag())
                         .add(R.id.main_fragment, vip, TAG_VIP.getTag())
+//                        .add(R.id.main_fragment,vip_fragment,mTAG_VIPINFO.getTag())
                         .hide(mallF).hide(vip).show(mCurrentFragment).commit();
 
             }
         }
+        vip.setOnButtonClick(new VipLoginFragment.OnButtonClick() {
+            @Override
+            public void onClick(View view) {
+                ISLogin = true;
+                switchFragment(FragmentTag.TAG_VIPINFO);
+            }
+        });
 
     }
 
@@ -111,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         merchant = new Merchant_Fragment();//积分
         vip = new VipLoginFragment();//会员
         mallF = new Mall_Fragment();//商城
+//        vip_fragment = new Vip_Fragment();
         synopsisF = new Synopsis_Vertical_Fragment();//竖向滑动公司简介
         if ("12".equals(isExit)) {
             rb_vip.setChecked(true);
@@ -122,23 +143,28 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_mall://商城
-//                        initFragment(mallF);
                         switchFragment(FragmentTag.TAG_MALL);
                         radioGroup.check(R.id.rb_mall);
                         isCurrF = 1;
                         break;
                     case R.id.rb_introduce://介绍
-//                        initFragment(synopsisF);
                         switchFragment(FragmentTag.TAG_SYNOPSIS);
                         radioGroup.check(R.id.rb_introduce);
                         isCurrF = 2;
                         break;
                     case R.id.rb_vip://会员
-//                        initFragment(vip);
-                        switchFragment(FragmentTag.TAG_VIP);
-                        radioGroup.check(R.id.rb_vip);
+                        if(ISLogin){
+                            switchFragment(FragmentTag.TAG_VIPINFO);
+                            radioGroup.check(R.id.rb_vip);
+
+                        }else{
+                            switchFragment(FragmentTag.TAG_VIP);
+                            radioGroup.check(R.id.rb_vip);
+
+                        }
                         isCurrF = 3;
                         break;
+
                 }
             }
         });
@@ -148,12 +174,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 初始化fragment
      **/
-//    public void initFragment(Fragment mFragment){
-//        android.support.v4.app.FragmentManager fm=getSupportFragmentManager();
-//        android.support.v4.app.FragmentTransaction ft=fm.beginTransaction();
-//        ft.replace(R.id.main_fragment, mFragment);
-//        ft.commit();
-//    }
     public void switchFragment(FragmentTag to) {
         if (!mCurrentTag.equals(to)) {
             Fragment currentF = getSupportFragmentManager().findFragmentByTag(
@@ -185,6 +205,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -202,5 +225,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
+
 
 }

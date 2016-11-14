@@ -1,5 +1,6 @@
 package com.minhuitianxia.myapplication.Fragment;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.minhuitianxia.myapplication.MyApplication;
+import com.minhuitianxia.myapplication.MyOnClick.MyButton;
+import com.minhuitianxia.myapplication.MyOnClick.MyOnClickListener;
 import com.minhuitianxia.myapplication.R;
 import com.minhuitianxia.myapplication.entity.VipDataEntity;
 import com.minhuitianxia.myapplication.entity.VipLoginEntity;
@@ -46,12 +49,15 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
     private String StrUserName, StrPassWord;
     private SharedPreferences sp = null;
 
+    private static OnButtonClick onButtonClick;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.viplogin, container, false);
         sp = getActivity().getSharedPreferences("userinfo", Context.MODE_PRIVATE);
         iniView(view);
+
         return view;
     }
 
@@ -151,7 +157,10 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
                                 loginEntity.setZhanghao(StrUserName);
                                 MyApplication.getInstance().setZhanghao(loginEntity);
                                 Toast.makeText(getActivity(), getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getActivity(), VipBasicActivity.class));
+//                                startActivity(new Intent(getActivity(), VipBasicActivity.class));
+                                if(onButtonClick!=null){
+                                    onButtonClick.onClick(lg_button);
+                                }
                             } else {
                                 Toast.makeText(getActivity(), getResources().getString(R.string.login_fail), Toast.LENGTH_SHORT).show();
                             }
@@ -175,6 +184,14 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
                 }
             }).start();
     }
-
+    public OnButtonClick getOnButtonClick() {
+        return onButtonClick;
+    }
+    public void setOnButtonClick(OnButtonClick onButtonClick) {
+        this.onButtonClick = onButtonClick;
+    }
+    public interface OnButtonClick{
+        public void onClick(View view);
+    }
 
 }
