@@ -5,6 +5,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/minhui_welcome"
+        android:background="@mipmap/minhui_welcome2"
         />
 </LinearLayout>

@@ -16,6 +16,7 @@ import com.minhuitianxia.myapplication.MainActivity;
 import com.minhuitianxia.myapplication.MyApplication;
 import com.minhuitianxia.myapplication.R;
 import com.minhuitianxia.myapplication.Utils.FragmentTag;
+import com.minhuitianxia.myapplication.Utils.IsNetWork;
 import com.minhuitianxia.myapplication.entity.VipLoginEntity;
 import com.minhuitianxia.myapplication.entity.VipPasswordEntity;
 
@@ -81,7 +82,11 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
                     Toast.makeText(this,"两次密码不一致，请重新确认",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                revise();
+                if(IsNetWork.isNetworkAvailable(this)){
+                    revise();
+                }else{
+                    Toast.makeText(this,getResources().getString(R.string.Fail_Network), Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -113,7 +118,7 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
 
                     @Override
                     public void onError(Throwable ex, boolean isOnCallback) {
-
+                        Toast.makeText(VipPasswordActivity.this,getResources().getString(R.string.login_unusual)+"", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

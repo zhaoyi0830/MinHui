@@ -26,7 +26,7 @@ import java.lang.reflect.Field;
 public class Introduce_Fragment extends Fragment {
     private WebView introuce_webView;
     private ImageView back;
-    private ProgressBar pb_goose;
+//    private ProgressBar pb_goose;
 
     private String HomeURL ="http://www.minhuitianxia.top";
 //    private String currUrl = "http://shop.55cicai.cn/minhui/";
@@ -41,7 +41,7 @@ public class Introduce_Fragment extends Fragment {
 
     private void iniView(View view) {
         introuce_webView = (WebView) view.findViewById(R.id.introuce_webView);
-        pb_goose = (ProgressBar) view.findViewById(R.id.pb_goose);
+//        pb_goose = (ProgressBar) view.findViewById(R.id.pb_goose);
         back = (ImageView) view.findViewById(R.id.back);
         webviewsettings();
         //加载需要显示的网页
@@ -112,7 +112,7 @@ public class Introduce_Fragment extends Fragment {
 //            String nowUrl = view.getUrl();
 //            String originaUrl = view.getOriginalUrl();
 //            Log.i("<===>originaUrl", "onPageFinished: "+originaUrl);
-            pb_goose.setVisibility(View.GONE);
+//            pb_goose.setVisibility(View.GONE);
             if(isFirstUrl==1){
                 currUrl=url;
                 isFirstUrl=2;

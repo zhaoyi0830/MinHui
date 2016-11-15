@@ -1,8 +1,6 @@
 package com.minhuitianxia.myapplication.Fragment;
 
-import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,21 +14,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.minhuitianxia.myapplication.MyApplication;
-import com.minhuitianxia.myapplication.MyOnClick.MyButton;
-import com.minhuitianxia.myapplication.MyOnClick.MyOnClickListener;
 import com.minhuitianxia.myapplication.R;
-import com.minhuitianxia.myapplication.entity.VipDataEntity;
+import com.minhuitianxia.myapplication.Utils.IsNetWork;
 import com.minhuitianxia.myapplication.entity.VipLoginEntity;
-import com.minhuitianxia.myapplication.ui.VipBasicActivity;
-import com.minhuitianxia.myapplication.ui.VipRechargeAvtivity;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -100,8 +91,11 @@ public class VipLoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.lg_button:
-                getPassword();
-
+                if(IsNetWork.isNetworkAvailable(getActivity())){
+                    getPassword();
+                }else{
+                    Toast.makeText(getActivity(),getResources().getString(R.string.Fail_Network), Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.im_password:
                 break;

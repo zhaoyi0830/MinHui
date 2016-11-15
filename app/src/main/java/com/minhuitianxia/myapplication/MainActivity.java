@@ -1,16 +1,9 @@
 package com.minhuitianxia.myapplication;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.os.Build;
-import android.os.Debug;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
@@ -22,9 +15,6 @@ import com.minhuitianxia.myapplication.Fragment.Mall_Fragment;
 import com.minhuitianxia.myapplication.Fragment.Merchant_Fragment;
 import com.minhuitianxia.myapplication.Fragment.Synopsis_Vertical_Fragment;
 import com.minhuitianxia.myapplication.Fragment.VipLoginFragment;
-import com.minhuitianxia.myapplication.Fragment.Vip_Fragment;
-import com.minhuitianxia.myapplication.MyOnClick.MyButton;
-import com.minhuitianxia.myapplication.MyOnClick.MyOnClickListener;
 import com.minhuitianxia.myapplication.Utils.FragmentTag;
 
 import java.util.ArrayList;
@@ -156,11 +146,9 @@ public class MainActivity extends AppCompatActivity{
                         if(ISLogin){
                             switchFragment(FragmentTag.TAG_VIPINFO);
                             radioGroup.check(R.id.rb_vip);
-
                         }else{
                             switchFragment(FragmentTag.TAG_VIP);
                             radioGroup.check(R.id.rb_vip);
-
                         }
                         isCurrF = 3;
                         break;
@@ -185,8 +173,6 @@ public class MainActivity extends AppCompatActivity{
                     toF = (Fragment) Class.forName(to.getTag()).newInstance();
                     getSupportFragmentManager().beginTransaction().hide(currentF)
                             .add(R.id.main_fragment, toF, to.getTag()).commit(); // 隐藏当前的fragment，add下一个到Activity中
-                    // 切换按钮动画
-//                    switchAnimation(to.ordinal());
                     // 更新当前Fragment
                     mCurrentTag = to;
                     mCurrentFragment = toF;
@@ -196,8 +182,6 @@ public class MainActivity extends AppCompatActivity{
                 // add过，直接hide当前，并show出目标Fragment
                 getSupportFragmentManager().beginTransaction().hide(currentF)
                         .show(toF).commit(); // 隐藏当前的fragment，显示下一个
-                // 切换按钮动画
-//                switchAnimation(to.ordinal());
                 // 更新当前Fragment
                 mCurrentTag = to;
                 mCurrentFragment = toF;

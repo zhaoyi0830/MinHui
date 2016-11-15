@@ -26,7 +26,7 @@ import java.lang.reflect.Field;
 public class Merchant_Fragment extends Fragment {
     private WebView introuce_webView;
     private ImageView back;
-    private ProgressBar pb_goose;
+//    private ProgressBar pb_goose;
     private String HomeURL ="http://jifen.minhuitianxia.top";
 //    private String currUrl = "http://www.600vip.cn/?cc=mhtx";
     private String currUrl;
@@ -40,7 +40,7 @@ public class Merchant_Fragment extends Fragment {
 
     private void iniView(View view) {
         introuce_webView = (WebView) view.findViewById(R.id.introuce_webView);
-        pb_goose = (ProgressBar) view.findViewById(R.id.pb_goose);
+//        pb_goose = (ProgressBar) view.findViewById(R.id.pb_goose);
 
         back = (ImageView) view.findViewById(R.id.back);
 
@@ -110,7 +110,7 @@ public class Merchant_Fragment extends Fragment {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            pb_goose.setVisibility(View.GONE);
+//            pb_goose.setVisibility(View.GONE);
 //            String originaUrl = view.getOriginalUrl();
 //            Log.i("<===>originaUrl", "推荐积分: "+originaUrl);
             if(isFirstUrl==1){

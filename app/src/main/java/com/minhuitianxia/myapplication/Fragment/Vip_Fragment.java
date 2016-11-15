@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import com.minhuitianxia.myapplication.MainActivity;
 import com.minhuitianxia.myapplication.MyApplication;
 import com.minhuitianxia.myapplication.R;
+import com.minhuitianxia.myapplication.Utils.IsNetWork;
 import com.minhuitianxia.myapplication.entity.VipDataEntity;
 import com.minhuitianxia.myapplication.ui.VipConsumeActivity;
 import com.minhuitianxia.myapplication.ui.VipDataActivity;
@@ -61,7 +62,11 @@ public class Vip_Fragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.vip_activity,container,false);
-        vipdata();
+        if(IsNetWork.isNetworkAvailable(getActivity())){
+            vipdata();
+        }else{
+            Toast.makeText(getActivity(),getResources().getString(R.string.Fail_Network), Toast.LENGTH_SHORT).show();
+        }
         iniView(view);
         return view;
 
@@ -159,7 +164,7 @@ public class Vip_Fragment extends Fragment implements View.OnClickListener{
 
                     @Override
                     public void onError(Throwable ex, boolean isOnCallback) {
-
+                        Toast.makeText(getActivity(),getResources().getString(R.string.login_unusual)+"", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

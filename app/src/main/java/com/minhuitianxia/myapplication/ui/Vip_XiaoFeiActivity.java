@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.minhuitianxia.myapplication.Adapter.VipChongZhi_Adapter;
 import com.minhuitianxia.myapplication.Adapter.VipXiaoFei_Adapter;
 import com.minhuitianxia.myapplication.MyApplication;
 import com.minhuitianxia.myapplication.R;
+import com.minhuitianxia.myapplication.Utils.IsNetWork;
 import com.minhuitianxia.myapplication.entity.VipChongZhi_Entity;
 import com.minhuitianxia.myapplication.entity.VipChongZhi_Obj;
 import com.minhuitianxia.myapplication.entity.VipLoginEntity;
@@ -49,7 +51,11 @@ public class Vip_XiaoFeiActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vip_xiaofei);
         iniView();
-        getHttp();
+        if(IsNetWork.isNetworkAvailable(this)){
+            getHttp();
+        }else{
+            Toast.makeText(this,getResources().getString(R.string.Fail_Network), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void iniView() {
@@ -114,6 +120,7 @@ public class Vip_XiaoFeiActivity extends AppCompatActivity implements View.OnCli
 
                     @Override
                     public void onError(Throwable ex, boolean isOnCallback) {
+                        Toast.makeText(Vip_XiaoFeiActivity.this,getResources().getString(R.string.login_unusual)+"", Toast.LENGTH_SHORT).show();
 
                     }
 
