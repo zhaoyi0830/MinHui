@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.VipLoginActivity"/>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivityyk"></activity>
         <activity android:name=".GuidePage"></activity>
         <activity android:name=".ui.VipDataActivity"></activity>
         <activity android:name=".ui.VipConsumeActivity"></activity>

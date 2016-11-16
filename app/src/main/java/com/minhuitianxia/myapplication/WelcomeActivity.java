@@ -8,6 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
+import com.minhuitianxia.myapplication.Fragment.VipLoginFragment;
+import com.minhuitianxia.myapplication.entity.VipLoginEntity;
+import com.minhuitianxia.myapplication.ui.VipLoginActivity;
+
 /**
  * 欢迎页
  * Created by Administrator on 2016/7/27.

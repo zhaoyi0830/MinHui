@@ -1,6 +1,8 @@
 package com.minhuitianxia.myapplication.ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +38,8 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
     private String Sold_pwd;
     private String Snew_pwd1;
     private String Snew_pwd2;
+
+    private ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +94,23 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
                 break;
         }
     }
+    private void progressD() {
+        pd = new ProgressDialog(VipPasswordActivity.this);
+        pd.setCanceledOnTouchOutside(false);
+        pd.setOnCancelListener(
+
+                new DialogInterface.OnCancelListener() {
+
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                    }
+                });
+        pd.setMessage("正在上传,请稍候...");
+        pd.show();
+    }
 
     private void revise() {
+        progressD();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -108,6 +127,7 @@ public class VipPasswordActivity extends Activity implements View.OnClickListene
                         VipPasswordEntity passentity = gson.fromJson(result,VipPasswordEntity.class);
                         boolean isSuccess = passentity.isSuccess();
                         if (isSuccess){
+                            pd.dismiss();
                             Toast.makeText(VipPasswordActivity.this, getResources().getString(R.string.password_success), Toast.LENGTH_SHORT).show();
 //                            startActivity(new Intent(VipPasswordActivity.this,VipBasicActivity.class));
                             finish();
