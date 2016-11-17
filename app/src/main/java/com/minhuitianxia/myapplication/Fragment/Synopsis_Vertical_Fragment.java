@@ -49,7 +49,8 @@ import java.util.List;
  */
 public class Synopsis_Vertical_Fragment extends Fragment implements VerticalViewPager.OnPageChangeListener{
     private VideoView video;
-    private ImageView back;
+    private ImageView back,zanting;
+//    private ImageView imag_start;
 
     private String currUrl;
     private int isFirstUrl =1;
@@ -71,18 +72,21 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.video_main,container,false);
         iniView(view);
+        video.start();
         return view;
     }
 
     private void iniView(View view) {
         video = (VideoView) view.findViewById(R.id.video);
         back = (ImageView) view.findViewById(R.id.back);
-
+//        imag_start = (ImageView) view.findViewById(R.id.imag_start);
         animationBottom = AnimationUtils.loadAnimation(getActivity(), R.anim.tutorail_bottom);
         listview = new ArrayList<>();
         pager=(VerticalViewPager)view.findViewById(R.id.pager);
         t2_next = (ImageView) view.findViewById(R.id.t2_next);
+//        zanting = (ImageView) view.findViewById(R.id.zanting);
         t2_next.startAnimation(animationBottom);
+//        zanting.setVisibility(View.GONE);
 
         String uri = "android.resource://" + getActivity().getPackageName()+ "/" + R.raw.min_hui;
         video.setVideoURI(Uri.parse(uri));
@@ -115,27 +119,21 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
         pager.setAdapter(vpAdapter);
         pager.setOnPageChangeListener(this);
         //暂停
-        video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (videoo){
-                    video.start();
-                    videoo=false;
-                }else{
-                    video.pause();
-//                    videoo=true;
-                }
-            }
-        });
         video.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (videoo){
-                    video.start();
-                    videoo=false;
-                }else{
-                    video.pause();
-                    videoo=true;
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    if (videoo){
+//                        imag_start.setVisibility(View.GONE);
+                        video.start();
+//                        zanting.setVisibility(View.GONE);
+                        videoo=false;
+                    }else{
+//                        imag_start.setVisibility(View.VISIBLE);
+                        video.pause();
+//                        zanting.setVisibility(View.VISIBLE);
+                        videoo=true;
+                    }
                 }
                 return true;
             }
@@ -144,9 +142,15 @@ public class Synopsis_Vertical_Fragment extends Fragment implements VerticalView
     }
 
     @Override
-    public void onPause() {
-        video.pause();
-        super.onPause();
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            video.pause();
+//            imag_start.setVisibility(View.VISIBLE);
+        }else{
+            video.start();
+//            imag_start.setVisibility(View.GONE);
+        }
     }
 
     @Override
